@@ -18,9 +18,7 @@ self.addEventListener('message', function (e) {
     self.importScripts('https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/Highlight.js');
 
     source = self.hljs.highlight('javascript', source).value;
-    source = source.split('\n');
-    source = source.join('\n');
-    source = source;
+    
 
     self.postMessage(source);
 });
