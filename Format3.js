@@ -5,7 +5,7 @@ self.addEventListener('message', function (e) {
         self._window = self.window;
         self.window = {};
 
-        self.importScripts('https://raw.githack.com/softwebtuts/softwebtuts.com/master/beautify.min.js');
+        self.importScripts('https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/Beautify.js');
 
         source = self.window.js_beautify(source, {
             unescape_strings: true,
@@ -15,7 +15,7 @@ self.addEventListener('message', function (e) {
         self.window = self._window;
     }
 
-    self.importScripts('https://raw.githack.com/softwebtuts/softwebtuts.com/master/highlight.pack.js');
+    self.importScripts('https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/Highlight.js');
 
     source = self.hljs.highlight('javascript', source).value;
     source = source.split('\n');
