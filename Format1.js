@@ -19,7 +19,7 @@ self.addEventListener('message', function (e) {
 
     source = self.hljs.highlight('javascript', source).value;
     source = source.split('\n');
-    source = source.join('\n');
+    source = source.join('<br/>');
     source = '<code>' + source + '</code>';
 
     self.postMessage(source);
