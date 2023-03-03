@@ -73,25 +73,25 @@ self.addEventListener("message", function (e) {
         }
     else if ("urlencode" === packer)
         try {
-            self.importScripts("https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/URLencode_Unpacker"), Urlencoded.detect(source) && (source = Urlencoded.unpack(source));
+            self.importScripts("https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/URLencode.js"), Urlencoded.detect(source) && (source = Urlencoded.unpack(source));
         } catch (err) {
             console.log(err);
         }
     else if ("p_a_c_k_e_r" === packer)
         try {
-            self.importScripts("https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/P_a_c_k_e_r_Unpacker.js"), P_A_C_K_E_R.detect(source) && (source = P_A_C_K_E_R.unpack(source));
+            self.importScripts("https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/P_a_c_k_e_r.js"), P_A_C_K_E_R.detect(source) && (source = P_A_C_K_E_R.unpack(source));
         } catch (err) {
             console.log(err);
         }
     else if ("javascriptobfuscator" === packer)
         try {
-            self.importScripts("https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/Javascript_Obfuscator_Unpacker.js"), JavascriptObfuscator.detect(source) && (source = JavascriptObfuscator.unpack(source));
+            self.importScripts("https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/Js_Obfuscator.js"), JavascriptObfuscator.detect(source) && (source = JavascriptObfuscator.unpack(source));
         } catch (err) {
             console.log(err);
         }
     else if ("myobfuscate" === packer)
         try {
-            self.importScripts("https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/My_Obfuscate_Unpacker.js"), MyObfuscate.detect(source) && (source = MyObfuscate.unpack(source));
+            self.importScripts("https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/My_Obfuscate.js"), MyObfuscate.detect(source) && (source = MyObfuscate.unpack(source));
         } catch (err) {
             console.log(err);
         }
