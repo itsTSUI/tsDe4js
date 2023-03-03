@@ -1,1 +1,26 @@
-self.addEventListener("message",function(t){var s=t.data.source;t.data.beautify&&(self._window=self.window,self.window={},self.importScripts("https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/Beautify.js"),s=self.window.js_beautify(s,{unescape_strings:!0,jslint_happy:!0}),self.window=self._window),self.importScripts("https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/Highlight.js"),s=(s=self.hljs.highlight("javascript",s).value).split("\n"),self.postMessage(s)});
+self.addEventListener('message', function (e) {
+    var source = e.data.source;
+
+    if (e.data.beautify) {
+        self._window = self.window;
+        self.window = {};
+'
+        self.importScripts('https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/Beautify.js');
+
+        source = self.window.js_beautify(source, {
+            unescape_strings: true,
+            jslint_happy: true
+        });
+
+        self.window = self._window;
+    }
+
+    self.importScripts('https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/Highlight.js');
+
+    source = self.hljs.highlight('javascript', source).value;
+    source = source.split('\n');
+    
+    source = '<code>' + source + '</code>';
+
+    self.postMessage(source);
+});
