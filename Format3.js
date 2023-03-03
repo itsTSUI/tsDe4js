@@ -4,8 +4,8 @@ self.addEventListener('message', function (e) {
     if (e.data.beautify) {
         self._window = self.window;
         self.window = {};
-'
-        self.importScripts('https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/Beautify.js');
+
+        self.importScripts('https://raw.githack.com/softwebtuts/softwebtuts.com/master/beautify.min.js');
 
         source = self.window.js_beautify(source, {
             unescape_strings: true,
@@ -15,12 +15,12 @@ self.addEventListener('message', function (e) {
         self.window = self._window;
     }
 
-    self.importScripts('https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/Highlight.js');
+    self.importScripts('https://raw.githack.com/softwebtuts/softwebtuts.com/master/highlight.pack.js');
 
     source = self.hljs.highlight('javascript', source).value;
     source = source.split('\n');
-    source = source.join('</code><code>');
-    source = '<code>' + source + '</code>';
+    source = source.join('<br/>');
+    source = source;
 
     self.postMessage(source);
 });
