@@ -1,0 +1,1 @@
+self.addEventListener("message",function(e){var s=e.data.source;e.data.beautify&&(self._window=self.window,self.window={},self.importScripts("https://cdn.jsdelivr.net/gh/TechlySeries/TS_Deobfuscator/Beautify.js"),s=self.window.js_beautify(s,{unescape_strings:!0,jslint_happy:!0}),self.window=self._window),self.postMessage(s)});
