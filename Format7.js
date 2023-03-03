@@ -14,4 +14,5 @@ self.addEventListener('message', function (e) {
 
         self.window = self._window;
     }
+        self.postMessage(source);
 });
