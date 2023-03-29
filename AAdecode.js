@@ -1,1 +1,34 @@
-var AADecode={decode:function(text){var decodingScript,evalPreamble="(\uFF9F\u0414\uFF9F) ['_'] ( (\uFF9F\u0414\uFF9F) ['_'] (",decodePreamble="( (\uFF9F\u0414\uFF9F) ['_'] (",evalPostamble=") (\uFF9F\u0398\uFF9F)) ('_');",decodePostamble=") ());";if(text=text.replace(/^\s*/,"").replace(/\s*$/,""),/^\s*$/.test(text))return"";if(0>text.lastIndexOf(evalPreamble)||text.lastIndexOf(evalPostamble)!=text.length-evalPostamble.length)throw new Error("Given code is not encoded as aaencode.");return eval(text.replace(evalPreamble,decodePreamble).replace(evalPostamble,decodePostamble))},doDecode:function(){var b=document.getElementById("aadecode_encoded"),a=document.getElementById("aadecode_decoded");try{a.value=AADecode.decode(b.value)}catch(c){a.value="****Error:\n"+c.toString()}},dummy:null}
+var AADecode = {
+    decode: function (text) {
+        var evalPreamble = "(\uFF9F\u0414\uFF9F) ['_'] ( (\uFF9F\u0414\uFF9F) ['_'] (";
+        var decodePreamble = "( (\uFF9F\u0414\uFF9F) ['_'] (";
+        var evalPostamble = ") (\uFF9F\u0398\uFF9F)) ('_');";
+        var decodePostamble = ") ());";
+        // strip beginning/ending space.
+        text = text.replace(/^\s*/, "").replace(/\s*$/, "");
+        // returns empty text for empty input.
+        if (/^\s*$/.test(text)) {
+            return "";
+        }
+        // check if it is encoded.
+        if (text.lastIndexOf(evalPreamble) < 0) {
+            throw new Error("Given code is not encoded as aaencode.");
+        }
+        if (text.lastIndexOf(evalPostamble) != text.length - evalPostamble.length) {
+            throw new Error("Given code is not encoded as aaencode.");
+        }
+        var decodingScript = text.replace(evalPreamble, decodePreamble)
+            .replace(evalPostamble, decodePostamble);
+        return eval(decodingScript);
+    },
+    doDecode: function () {
+        var oEncoded = document.getElementById("aadecode_encoded");
+        var oDecoded = document.getElementById("aadecode_decoded");
+        try {
+            oDecoded.value = AADecode.decode(oEncoded.value);
+        } catch (ex) {
+            oDecoded.value = "****Error:\n" + ex.toString();
+        }
+    },
+    dummy: null
+};
